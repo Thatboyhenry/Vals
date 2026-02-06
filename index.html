@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>For ORE❤️</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #ff4d6d, #ff758f);
+      font-family: Arial, sans-serif;
+      overflow: hidden;
+      color: blue;
+      text-align: center;
+    }
+
+    .card {
+      background: rgba(0,0,0,0.35);
+      padding: 35px 25px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      z-index: 2;
+      max-width: 340px;
+      backdrop-filter: blur(6px);
+    }
+
+    img {
+      width: 170px;
+      height: 170px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 12px;
+      border: 3px solid white;
+    }
+
+    h1 {
+      font-size: 24px;
+      margin: 10px 0 10px;
+    }
+
+    .note {
+      font-size: 16px;
+      margin-bottom: 12px;
+      opacity: 0.95;
+    }
+
+    button {
+      padding: 12px 22px;
+      border: none;
+      border-radius: 10px;
+      font-size: 18px;
+      margin: 8px;
+      cursor: pointer;
+    }
+
+    .yes {
+      background: #00ffcc;
+    }
+
+    .no {
+      background: #ff3333;
+      position: absolute;
+    }
+
+    .signature {
+      margin-top: 10px;
+      font-size: 13px;
+      opacity: 0.9;
+    }
+
+    .heart {
+      position: fixed;
+      top: -10px;
+      font-size: 20px;
+      animation: fall linear infinite;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .confetti {
+      position: fixed;
+      top: 0;
+      width: 8px;
+      height: 12px;
+      animation: confetti-fall 3s linear forwards;
+      z-index: 3;
+    }
+
+    @keyframes fall {
+      to { transform: translateY(110vh); }
+    }
+
+    @keyframes confetti-fall {
+      to { transform: translateY(110vh) rotate(720deg); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <audio id="bgm" src="music.mp3" loop></audio>
+
+  <div class="card">
+    <h1>Will you be my Valentine, ORE? ❤️</h1>
+    <div class="note">From the moment you came into my life, everything felt brighter.  
+      No matter the distance, you’re always in my heart. 🥰
+    </div>
+
+    <button class="YES" onclick="sayYes()">Yes</button>
+    <button class="NO" onmouseover="moveNo()">No</button>
+
+    <div class="signature">From David ❤️
+    </div>
+  
+
+  <script>
+    const music = document.getElementById("bgm");
+    document.body.addEventListener("click", () => {
+      music.play().catch(() => {});
+    }, { once: true });
+
+    function sayYes() {
+      alert("Yayyy🥹!!! I love you so much ORE 😘❤️");
+      launchConfetti();
+      setTimeout(() => {
+        window.location.href = "https://wa.me/?text=Yes%20my%20love%20😍%20I%20will%20be%20your%20Valentine!";
+      }, 800);
+    }
+
+    function moveNo() {
+      const noBtn = document.querySelector(".no");
+      const x = Math.random() * (window.innerWidth - 100);
+      const y = Math.random() * (window.innerHeight - 50);
+      noBtn.style.left = x + "px";
+      noBtn.style.top = y + "px";
+    }
+
+    function launchConfetti() {
+      for (let i = 0; i < 120; i++) {
+        const c = document.createElement("div");
+        c.className = "confetti";
+        c.style.left = Math.random() * window.innerWidth + "px";
+        c.style.background = ["#fff","#ffd166","#06d6a0","#ef476f"][Math.floor(Math.random()*4)];
+        c.style.animationDuration = (2 + Math.random() * 2) + "s";
+        document.body.appendChild(c);
+        setTimeout(() => c.remove(), 4000);
+      }
+    }
+
+    setInterval(() => {
+      const heart = document.createElement("div");
+      heart.className = "heart";
+      heart.innerHTML = "❤️";
+      heart.style.left = Math.random() * window.innerWidth + "px";
+      heart.style.animationDuration = (2 + Math.random() * 3) + "s";
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 5000);
+    }, 280);
+  </script>
+
+</body>
+</html>
+    } 
